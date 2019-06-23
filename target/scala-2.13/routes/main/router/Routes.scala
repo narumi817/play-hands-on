@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/mizukoshinarumi/workspace/scala_workspace/play-hands-on/conf/routes
-// @DATE:Sun Jun 23 16:46:36 JST 2019
+// @DATE:Sun Jun 23 16:57:10 JST 2019
 
 package router
 
@@ -41,6 +41,7 @@ class Routes(
   def documentation = List(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """todo/helloworld""", """controllers.TodoController.helloworld()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """todo""", """controllers.TodoController.list()"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -84,6 +85,24 @@ class Routes(
     )
   )
 
+  // @LINE:8
+  private[this] lazy val controllers_TodoController_list2_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("todo")))
+  )
+  private[this] lazy val controllers_TodoController_list2_invoker = createInvoker(
+    TodoController_1.list(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.TodoController",
+      "list",
+      Nil,
+      "GET",
+      this.prefix + """todo""",
+      """ List display""",
+      Seq()
+    )
+  )
+
 
   def routes: PartialFunction[RequestHeader, Handler] = {
   
@@ -97,6 +116,12 @@ class Routes(
     case controllers_TodoController_helloworld1_route(params@_) =>
       call { 
         controllers_TodoController_helloworld1_invoker.call(TodoController_1.helloworld())
+      }
+  
+    // @LINE:8
+    case controllers_TodoController_list2_route(params@_) =>
+      call { 
+        controllers_TodoController_list2_invoker.call(TodoController_1.list())
       }
   }
 }

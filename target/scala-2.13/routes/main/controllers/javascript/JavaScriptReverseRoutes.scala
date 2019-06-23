@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/mizukoshinarumi/workspace/scala_workspace/play-hands-on/conf/routes
-// @DATE:Sun Jun 23 16:46:36 JST 2019
+// @DATE:Sun Jun 23 16:57:10 JST 2019
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -24,6 +24,16 @@ package controllers.javascript {
       """
         function() {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "todo/helloworld"})
+        }
+      """
+    )
+  
+    // @LINE:8
+    def list: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.TodoController.list",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "todo"})
         }
       """
     )

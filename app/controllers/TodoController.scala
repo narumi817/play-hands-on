@@ -12,4 +12,9 @@ class TodoController @Inject()(mcc: MessagesControllerComponents) extends Messag
     Ok("Hello World")
   }
 
+  def list() = Action { implicit request: MessagesRequest[AnyContent] =>
+    val message: String = "ここにリストを表示する"
+    Ok(views.html.list(message))
+  }
+
 }

@@ -3,3 +3,6 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 # Hello World
 GET     /todo/helloworld            controllers.TodoController.helloworld()
+
+# List display
+GET     /todo                       controllers.TodoController.list()
