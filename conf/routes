@@ -10,3 +10,7 @@ GET     /todo                       controllers.TodoController.list()
 # input form
 GET     /todo/new                   controllers.TodoController.todoNew()
 POST    /todo                       controllers.TodoController.todoAdd()
+
+# update data
+GET     /todo/edit/:todoId          controllers.TodoController.todoEdit(todoId: Long)
+POST    /todo/:todoId               controllers.TodoController.todoUpdate(todoId: Long)

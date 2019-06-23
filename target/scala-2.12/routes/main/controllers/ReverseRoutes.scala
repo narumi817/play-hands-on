@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/mizukoshinarumi/workspace/scala_workspace/play-hands-on/conf/routes
-// @DATE:Sun Jun 23 19:14:00 JST 2019
+// @DATE:Sun Jun 23 20:12:39 JST 2019
 
 import play.api.mvc.Call
 
@@ -17,6 +17,18 @@ package controllers {
     }
 
   
+    // @LINE:15
+    def todoEdit(todoId:Long): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "todo/edit/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Long]].unbind("todoId", todoId)))
+    }
+  
+    // @LINE:16
+    def todoUpdate(todoId:Long): Call = {
+      
+      Call("POST", _prefix + { _defaultPrefix } + "todo/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Long]].unbind("todoId", todoId)))
+    }
+  
     // @LINE:12
     def todoAdd(): Call = {
       
@@ -29,16 +41,16 @@ package controllers {
       Call("GET", _prefix + { _defaultPrefix } + "todo/helloworld")
     }
   
-    // @LINE:11
-    def todoNew(): Call = {
-      
-      Call("GET", _prefix + { _defaultPrefix } + "todo/new")
-    }
-  
     // @LINE:8
     def list(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "todo")
+    }
+  
+    // @LINE:11
+    def todoNew(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "todo/new")
     }
   
   }

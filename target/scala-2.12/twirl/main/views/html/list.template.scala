@@ -40,12 +40,12 @@ Seq[Any](format.raw/*3.1*/("""
                 <tbody>
                     """),_display_(/*17.22*/items/*17.27*/.map/*17.31*/ { todo =>_display_(Seq[Any](format.raw/*17.41*/("""
                         """),format.raw/*18.25*/("""<tr>
-                            <td>"""),_display_(/*19.34*/todo/*19.38*/.name),format.raw/*19.43*/("""</td>
+                            <td><a href=""""),_display_(/*19.43*/controllers/*19.54*/.routes.TodoController.todoEdit(todo.id.get)),format.raw/*19.98*/("""">"""),_display_(/*19.101*/todo/*19.105*/.name),format.raw/*19.110*/("""</a></td>
                         </tr>
                     """)))}),format.raw/*21.22*/("""
                 """),format.raw/*22.17*/("""</tbody>
             </table>
-            <a href="/todo/new">登録画面</a>
+            <a href=""""),_display_(/*24.23*/controllers/*24.34*/.routes.TodoController.todoNew()),format.raw/*24.66*/("""">登録画面</a>
         </section>
     </body>
 </html>"""))
@@ -64,11 +64,11 @@ Seq[Any](format.raw/*3.1*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2019-06-23T18:12:34.818
+                  DATE: 2019-06-23T20:13:48.888
                   SOURCE: /Users/mizukoshinarumi/workspace/scala_workspace/play-hands-on/app/views/list.scala.html
-                  HASH: 33b29893e97e21d4ea4785e77a46d5acd3ab9825
-                  MATRIX: 432->1|756->20|868->39|895->40|1210->328|1224->333|1237->337|1285->347|1338->372|1403->410|1416->414|1442->419|1530->476|1575->493
-                  LINES: 17->1|22->2|27->3|28->4|41->17|41->17|41->17|41->17|42->18|43->19|43->19|43->19|45->21|46->22
+                  HASH: b843cdd020f2235647cf39fca7b970e27ddf46c5
+                  MATRIX: 432->1|756->20|868->39|895->40|1210->328|1224->333|1237->337|1285->347|1338->372|1412->419|1432->430|1497->474|1528->477|1542->481|1569->486|1661->547|1706->564|1785->616|1805->627|1858->659
+                  LINES: 17->1|22->2|27->3|28->4|41->17|41->17|41->17|41->17|42->18|43->19|43->19|43->19|43->19|43->19|43->19|45->21|46->22|48->24|48->24|48->24
                   -- GENERATED --
               */
           

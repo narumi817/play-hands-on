@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/mizukoshinarumi/workspace/scala_workspace/play-hands-on/conf/routes
-// @DATE:Sun Jun 23 19:14:00 JST 2019
+// @DATE:Sun Jun 23 20:12:39 JST 2019
 
 package router
 
@@ -44,6 +44,8 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """todo""", """controllers.TodoController.list()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """todo/new""", """controllers.TodoController.todoNew()"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """todo""", """controllers.TodoController.todoAdd()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """todo/edit/""" + "$" + """todoId<[^/]+>""", """controllers.TodoController.todoEdit(todoId:Long)"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """todo/""" + "$" + """todoId<[^/]+>""", """controllers.TodoController.todoUpdate(todoId:Long)"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -141,6 +143,42 @@ class Routes(
     )
   )
 
+  // @LINE:15
+  private[this] lazy val controllers_TodoController_todoEdit5_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("todo/edit/"), DynamicPart("todoId", """[^/]+""",true)))
+  )
+  private[this] lazy val controllers_TodoController_todoEdit5_invoker = createInvoker(
+    TodoController_1.todoEdit(fakeValue[Long]),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.TodoController",
+      "todoEdit",
+      Seq(classOf[Long]),
+      "GET",
+      this.prefix + """todo/edit/""" + "$" + """todoId<[^/]+>""",
+      """ update data""",
+      Seq()
+    )
+  )
+
+  // @LINE:16
+  private[this] lazy val controllers_TodoController_todoUpdate6_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("todo/"), DynamicPart("todoId", """[^/]+""",true)))
+  )
+  private[this] lazy val controllers_TodoController_todoUpdate6_invoker = createInvoker(
+    TodoController_1.todoUpdate(fakeValue[Long]),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.TodoController",
+      "todoUpdate",
+      Seq(classOf[Long]),
+      "POST",
+      this.prefix + """todo/""" + "$" + """todoId<[^/]+>""",
+      """""",
+      Seq()
+    )
+  )
+
 
   def routes: PartialFunction[RequestHeader, Handler] = {
   
@@ -172,6 +210,18 @@ class Routes(
     case controllers_TodoController_todoAdd4_route(params@_) =>
       call { 
         controllers_TodoController_todoAdd4_invoker.call(TodoController_1.todoAdd())
+      }
+  
+    // @LINE:15
+    case controllers_TodoController_todoEdit5_route(params@_) =>
+      call(params.fromPath[Long]("todoId", None)) { (todoId) =>
+        controllers_TodoController_todoEdit5_invoker.call(TodoController_1.todoEdit(todoId))
+      }
+  
+    // @LINE:16
+    case controllers_TodoController_todoUpdate6_route(params@_) =>
+      call(params.fromPath[Long]("todoId", None)) { (todoId) =>
+        controllers_TodoController_todoUpdate6_invoker.call(TodoController_1.todoUpdate(todoId))
       }
   }
 }
