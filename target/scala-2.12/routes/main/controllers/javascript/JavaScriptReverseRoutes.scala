@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/mizukoshinarumi/workspace/scala_workspace/play-hands-on/conf/routes
-// @DATE:Sun Jun 23 20:12:39 JST 2019
+// @DATE:Sun Jun 23 22:10:13 JST 2019
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -17,6 +17,16 @@ package controllers.javascript {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
+  
+    // @LINE:19
+    def todoDelete: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.TodoController.todoDelete",
+      """
+        function(todoId0) {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "todo/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Long]].javascriptUnbind + """)("todoId", todoId0)) + "/delete"})
+        }
+      """
+    )
   
     // @LINE:15
     def todoEdit: JavaScriptReverseRoute = JavaScriptReverseRoute(

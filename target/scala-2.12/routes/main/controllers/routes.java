@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/mizukoshinarumi/workspace/scala_workspace/play-hands-on/conf/routes
-// @DATE:Sun Jun 23 20:12:39 JST 2019
+// @DATE:Sun Jun 23 22:10:13 JST 2019
 
 package controllers;
 

@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/mizukoshinarumi/workspace/scala_workspace/play-hands-on/conf/routes
-// @DATE:Sun Jun 23 20:12:39 JST 2019
+// @DATE:Sun Jun 23 22:10:13 JST 2019
 
 package router
 
@@ -46,6 +46,7 @@ class Routes(
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """todo""", """controllers.TodoController.todoAdd()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """todo/edit/""" + "$" + """todoId<[^/]+>""", """controllers.TodoController.todoEdit(todoId:Long)"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """todo/""" + "$" + """todoId<[^/]+>""", """controllers.TodoController.todoUpdate(todoId:Long)"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """todo/""" + "$" + """todoId<[^/]+>/delete""", """controllers.TodoController.todoDelete(todoId:Long)"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -179,6 +180,24 @@ class Routes(
     )
   )
 
+  // @LINE:19
+  private[this] lazy val controllers_TodoController_todoDelete7_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("todo/"), DynamicPart("todoId", """[^/]+""",true), StaticPart("/delete")))
+  )
+  private[this] lazy val controllers_TodoController_todoDelete7_invoker = createInvoker(
+    TodoController_1.todoDelete(fakeValue[Long]),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.TodoController",
+      "todoDelete",
+      Seq(classOf[Long]),
+      "POST",
+      this.prefix + """todo/""" + "$" + """todoId<[^/]+>/delete""",
+      """ delete data""",
+      Seq()
+    )
+  )
+
 
   def routes: PartialFunction[RequestHeader, Handler] = {
   
@@ -222,6 +241,12 @@ class Routes(
     case controllers_TodoController_todoUpdate6_route(params@_) =>
       call(params.fromPath[Long]("todoId", None)) { (todoId) =>
         controllers_TodoController_todoUpdate6_invoker.call(TodoController_1.todoUpdate(todoId))
+      }
+  
+    // @LINE:19
+    case controllers_TodoController_todoDelete7_route(params@_) =>
+      call(params.fromPath[Long]("todoId", None)) { (todoId) =>
+        controllers_TodoController_todoDelete7_invoker.call(TodoController_1.todoDelete(todoId))
       }
   }
 }

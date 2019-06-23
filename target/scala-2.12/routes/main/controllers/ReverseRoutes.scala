@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/mizukoshinarumi/workspace/scala_workspace/play-hands-on/conf/routes
-// @DATE:Sun Jun 23 20:12:39 JST 2019
+// @DATE:Sun Jun 23 22:10:13 JST 2019
 
 import play.api.mvc.Call
 
@@ -16,6 +16,12 @@ package controllers {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
+  
+    // @LINE:19
+    def todoDelete(todoId:Long): Call = {
+      
+      Call("POST", _prefix + { _defaultPrefix } + "todo/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Long]].unbind("todoId", todoId)) + "/delete")
+    }
   
     // @LINE:15
     def todoEdit(todoId:Long): Call = {

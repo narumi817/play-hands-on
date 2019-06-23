@@ -73,4 +73,16 @@ class TodoService @Inject() (dbApi: DBApi) {
     }
   }
 
+  def delete(id: Long): Unit = {
+    db.withConnection { implicit connection =>
+      SQL(
+        """
+          DELETE FROM todo WHERE id = {id}
+        """
+      ).on(
+        'id -> id
+      ).executeUpdate()
+    }
+  }
+
 }

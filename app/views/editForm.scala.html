@@ -10,15 +10,21 @@
 @helper.form(action = routes.TodoController.todoUpdate(id)) {
 @helper.CSRF.formField
 
-<fieldset>
+    <fieldset>
 
-    @helper.inputText(todoForm("name"), '_label -> "名前")
+        @helper.inputText(todoForm("name"), '_label -> "名前")
 
-</fieldset>
+    </fieldset>
 
-<input type="submit" value="登録">
+    <input type="submit" value="登録">
 
 }
 
+@helper.form(action = routes.TodoController.todoDelete(id)) {
+@helper.CSRF.formField
+
+    <input type="submit" value="削除" class="btn danger">
+
+}
 </body>
 </html>

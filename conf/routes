@@ -14,3 +14,6 @@ POST    /todo                       controllers.TodoController.todoAdd()
 # update data
 GET     /todo/edit/:todoId          controllers.TodoController.todoEdit(todoId: Long)
 POST    /todo/:todoId               controllers.TodoController.todoUpdate(todoId: Long)
+
+# delete data
+POST    /todo/:todoId/delete        controllers.TodoController.todoDelete(todoId: Long)
