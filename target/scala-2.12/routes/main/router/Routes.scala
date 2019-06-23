@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/mizukoshinarumi/workspace/scala_workspace/play-hands-on/conf/routes
-// @DATE:Sun Jun 23 16:57:10 JST 2019
+// @DATE:Sun Jun 23 19:14:00 JST 2019
 
 package router
 
@@ -42,6 +42,8 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """todo/helloworld""", """controllers.TodoController.helloworld()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """todo""", """controllers.TodoController.list()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """todo/new""", """controllers.TodoController.todoNew()"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """todo""", """controllers.TodoController.todoAdd()"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -103,6 +105,42 @@ class Routes(
     )
   )
 
+  // @LINE:11
+  private[this] lazy val controllers_TodoController_todoNew3_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("todo/new")))
+  )
+  private[this] lazy val controllers_TodoController_todoNew3_invoker = createInvoker(
+    TodoController_1.todoNew(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.TodoController",
+      "todoNew",
+      Nil,
+      "GET",
+      this.prefix + """todo/new""",
+      """ input form""",
+      Seq()
+    )
+  )
+
+  // @LINE:12
+  private[this] lazy val controllers_TodoController_todoAdd4_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("todo")))
+  )
+  private[this] lazy val controllers_TodoController_todoAdd4_invoker = createInvoker(
+    TodoController_1.todoAdd(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.TodoController",
+      "todoAdd",
+      Nil,
+      "POST",
+      this.prefix + """todo""",
+      """""",
+      Seq()
+    )
+  )
+
 
   def routes: PartialFunction[RequestHeader, Handler] = {
   
@@ -122,6 +160,18 @@ class Routes(
     case controllers_TodoController_list2_route(params@_) =>
       call { 
         controllers_TodoController_list2_invoker.call(TodoController_1.list())
+      }
+  
+    // @LINE:11
+    case controllers_TodoController_todoNew3_route(params@_) =>
+      call { 
+        controllers_TodoController_todoNew3_invoker.call(TodoController_1.todoNew())
+      }
+  
+    // @LINE:12
+    case controllers_TodoController_todoAdd4_route(params@_) =>
+      call { 
+        controllers_TodoController_todoAdd4_invoker.call(TodoController_1.todoAdd())
       }
   }
 }

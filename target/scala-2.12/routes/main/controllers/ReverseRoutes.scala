@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/mizukoshinarumi/workspace/scala_workspace/play-hands-on/conf/routes
-// @DATE:Sun Jun 23 16:57:10 JST 2019
+// @DATE:Sun Jun 23 19:14:00 JST 2019
 
 import play.api.mvc.Call
 
@@ -17,10 +17,22 @@ package controllers {
     }
 
   
+    // @LINE:12
+    def todoAdd(): Call = {
+      
+      Call("POST", _prefix + { _defaultPrefix } + "todo")
+    }
+  
     // @LINE:5
     def helloworld(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "todo/helloworld")
+    }
+  
+    // @LINE:11
+    def todoNew(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "todo/new")
     }
   
     // @LINE:8
