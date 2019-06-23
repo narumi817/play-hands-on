@@ -14,32 +14,48 @@ import views.html._
 import play.api.templates.PlayMagic._
 import play.api.mvc._
 import play.api.data._
+/*1.2*/import services._
 
-object list extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template1[String,play.twirl.api.HtmlFormat.Appendable] {
+object list extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template1[Seq[Todo],play.twirl.api.HtmlFormat.Appendable] {
 
   /**/
-  def apply/*1.2*/(message: String):play.twirl.api.HtmlFormat.Appendable = {
+  def apply/*2.2*/(items: Seq[Todo]):play.twirl.api.HtmlFormat.Appendable = {
     _display_ {
       {
 
 
-Seq[Any](format.raw/*2.1*/("""<html>
+Seq[Any](format.raw/*3.1*/("""
+"""),format.raw/*4.1*/("""<html>
     <head>
         <title>Todo</title>
     </head>
     <body>
         <section>
-            """),_display_(/*8.14*/message),format.raw/*8.21*/("""
-        """),format.raw/*9.9*/("""</section>
+            <table>
+                <thead>
+                    <tr>
+                        <th>名前</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    """),_display_(/*17.22*/items/*17.27*/.map/*17.31*/ { todo =>_display_(Seq[Any](format.raw/*17.41*/("""
+                        """),format.raw/*18.25*/("""<tr>
+                            <td>"""),_display_(/*19.34*/todo/*19.38*/.name),format.raw/*19.43*/("""</td>
+                        </tr>
+                    """)))}),format.raw/*21.22*/("""
+                """),format.raw/*22.17*/("""</tbody>
+            </table>
+            <a href="/todo/new">登録画面</a>
+        </section>
     </body>
 </html>"""))
       }
     }
   }
 
-  def render(message:String): play.twirl.api.HtmlFormat.Appendable = apply(message)
+  def render(items:Seq[Todo]): play.twirl.api.HtmlFormat.Appendable = apply(items)
 
-  def f:((String) => play.twirl.api.HtmlFormat.Appendable) = (message) => apply(message)
+  def f:((Seq[Todo]) => play.twirl.api.HtmlFormat.Appendable) = (items) => apply(items)
 
   def ref: this.type = this
 
@@ -48,11 +64,11 @@ Seq[Any](format.raw/*2.1*/("""<html>
 
               /*
                   -- GENERATED --
-                  DATE: 2019-06-23T17:14:49.119
+                  DATE: 2019-06-23T17:27:39.504
                   SOURCE: /Users/mizukoshinarumi/workspace/scala_workspace/play-hands-on/app/views/list.scala.html
-                  HASH: 1302aea08eaee403e4d630b4f08f8d46f6a0eb0a
-                  MATRIX: 728->1|839->19|965->119|992->126|1027->135
-                  LINES: 21->1|26->2|32->8|32->8|33->9
+                  HASH: 33b29893e97e21d4ea4785e77a46d5acd3ab9825
+                  MATRIX: 432->1|756->20|868->39|895->40|1210->328|1224->333|1237->337|1285->347|1338->372|1403->410|1416->414|1442->419|1530->476|1575->493
+                  LINES: 17->1|22->2|27->3|28->4|41->17|41->17|41->17|41->17|42->18|43->19|43->19|43->19|45->21|46->22
                   -- GENERATED --
               */
           
