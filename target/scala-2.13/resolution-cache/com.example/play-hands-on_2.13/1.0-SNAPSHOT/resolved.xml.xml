@@ -4,7 +4,7 @@
 		module="play-hands-on_2.13"
 		revision="1.0-SNAPSHOT"
 		status="integration"
-		publication="20190623120653"
+		publication="20190623174643"
 	>
 		<description>
 		play-hands-on
@@ -53,5 +53,9 @@
 		<dependency org="com.typesafe.play" name="filters-helpers_2.13" rev="2.7.3" conf="compile->default(compile)"/>
 		<dependency org="com.typesafe.play" name="play-guice_2.13" rev="2.7.3" conf="compile->default(compile)"/>
 		<dependency org="org.scalatestplus.play" name="scalatestplus-play_2.13" rev="4.0.3" conf="test->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-jdbc_2.13" rev="2.7.3" conf="compile->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-jdbc-evolutions_2.13" rev="2.7.3" conf="compile->default(compile)"/>
+		<dependency org="com.typesafe.play" name="anorm_2.13" rev="2.5.3" conf="compile->default(compile)"/>
+		<dependency org="com.h2database" name="h2" rev="1.4.196" conf="compile->default(compile)"/>
 	</dependencies>
 </ivy-module>
