@@ -35,4 +35,16 @@ class TodoService @Inject() (dbApi: DBApi) {
 
   }
 
+  def insert(todo: Todo): Unit = {
+    db.withConnection { implicit connection =>
+      SQL(
+        """
+          insert into todo (name) values ({name})
+        """
+      ).on(
+        'name -> todo.name
+      ).executeUpdate()
+    }
+  }
+
 }
