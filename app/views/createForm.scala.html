@@ -1,18 +1,20 @@
-@(todoForm: Form[String])(implicit request: MessagesRequestHeader)
+@import services._
+@(performanceInfoForm: Form[PerformanceInfo])(implicit request: MessagesRequestHeader)
 
 <html>
     <head>
-        <title>Todo</title>
+        <title>ジャニーズ　みんなのコンサートレポ</title>
     </head>
     <body>
-        <h1>Todo登録</h1>
+        <h1>公演 登録</h1>
 
-        @helper.form(action = routes.TodoController.todoAdd()) {
+        @helper.form(action = routes.PerformanceInfoController.performanceInfoAdd()) {
         @helper.CSRF.formField
 
         <fieldset>
 
-            @helper.inputText(todoForm("name"), '_label -> "名前")
+            @helper.inputText(performanceInfoForm("date"), '_label -> "日程")
+            @helper.inputText(performanceInfoForm("time"), '_label -> "開演時間")
 
         </fieldset>
 

@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/mizukoshinarumi/workspace/scala_workspace/play-hands-on/conf/routes
-// @DATE:Sun Jun 23 22:10:13 JST 2019
+// @DATE:Mon Jun 24 23:36:37 JST 2019
 
 package router
 
@@ -14,24 +14,24 @@ import _root_.controllers.Assets.Asset
 class Routes(
   override val errorHandler: play.api.http.HttpErrorHandler, 
   // @LINE:2
-  Assets_0: controllers.Assets,
+  Assets_1: controllers.Assets,
   // @LINE:5
-  TodoController_1: controllers.TodoController,
+  PerformanceInfoController_0: controllers.PerformanceInfoController,
   val prefix: String
 ) extends GeneratedRouter {
 
    @javax.inject.Inject()
    def this(errorHandler: play.api.http.HttpErrorHandler,
     // @LINE:2
-    Assets_0: controllers.Assets,
+    Assets_1: controllers.Assets,
     // @LINE:5
-    TodoController_1: controllers.TodoController
-  ) = this(errorHandler, Assets_0, TodoController_1, "/")
+    PerformanceInfoController_0: controllers.PerformanceInfoController
+  ) = this(errorHandler, Assets_1, PerformanceInfoController_0, "/")
 
   def withPrefix(addPrefix: String): Routes = {
     val prefix = play.api.routing.Router.concatPrefix(addPrefix, this.prefix)
     router.RoutesPrefix.setPrefix(prefix)
-    new Routes(errorHandler, Assets_0, TodoController_1, prefix)
+    new Routes(errorHandler, Assets_1, PerformanceInfoController_0, prefix)
   }
 
   private[this] val defaultPrefix: String = {
@@ -40,13 +40,12 @@ class Routes(
 
   def documentation = List(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """todo/helloworld""", """controllers.TodoController.helloworld()"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """todo""", """controllers.TodoController.list()"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """todo/new""", """controllers.TodoController.todoNew()"""),
-    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """todo""", """controllers.TodoController.todoAdd()"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """todo/edit/""" + "$" + """todoId<[^/]+>""", """controllers.TodoController.todoEdit(todoId:Long)"""),
-    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """todo/""" + "$" + """todoId<[^/]+>""", """controllers.TodoController.todoUpdate(todoId:Long)"""),
-    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """todo/""" + "$" + """todoId<[^/]+>/delete""", """controllers.TodoController.todoDelete(todoId:Long)"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """performance""", """controllers.PerformanceInfoController.list()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """performance/new""", """controllers.PerformanceInfoController.performanceInfoNew()"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """performance""", """controllers.PerformanceInfoController.performanceInfoAdd()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """performance/edit/""" + "$" + """performanceId<[^/]+>""", """controllers.PerformanceInfoController.performanceInfoEdit(performanceId:Int)"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """performance/""" + "$" + """performanceId<[^/]+>""", """controllers.PerformanceInfoController.performanceInfoUpdate(performanceId:Int)"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """performance/""" + "$" + """performanceId<[^/]+>/delete""", """controllers.PerformanceInfoController.performanceInfoDelete(performanceId:Int)"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -59,7 +58,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("assets/"), DynamicPart("file", """.+""",false)))
   )
   private[this] lazy val controllers_Assets_versioned0_invoker = createInvoker(
-    Assets_0.versioned(fakeValue[String], fakeValue[Asset]),
+    Assets_1.versioned(fakeValue[String], fakeValue[Asset]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.Assets",
@@ -73,126 +72,108 @@ class Routes(
   )
 
   // @LINE:5
-  private[this] lazy val controllers_TodoController_helloworld1_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("todo/helloworld")))
+  private[this] lazy val controllers_PerformanceInfoController_list1_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("performance")))
   )
-  private[this] lazy val controllers_TodoController_helloworld1_invoker = createInvoker(
-    TodoController_1.helloworld(),
+  private[this] lazy val controllers_PerformanceInfoController_list1_invoker = createInvoker(
+    PerformanceInfoController_0.list(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
-      "controllers.TodoController",
-      "helloworld",
-      Nil,
-      "GET",
-      this.prefix + """todo/helloworld""",
-      """ Hello World""",
-      Seq()
-    )
-  )
-
-  // @LINE:8
-  private[this] lazy val controllers_TodoController_list2_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("todo")))
-  )
-  private[this] lazy val controllers_TodoController_list2_invoker = createInvoker(
-    TodoController_1.list(),
-    play.api.routing.HandlerDef(this.getClass.getClassLoader,
-      "router",
-      "controllers.TodoController",
+      "controllers.PerformanceInfoController",
       "list",
       Nil,
       "GET",
-      this.prefix + """todo""",
+      this.prefix + """performance""",
       """ List display""",
       Seq()
     )
   )
 
-  // @LINE:11
-  private[this] lazy val controllers_TodoController_todoNew3_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("todo/new")))
+  // @LINE:8
+  private[this] lazy val controllers_PerformanceInfoController_performanceInfoNew2_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("performance/new")))
   )
-  private[this] lazy val controllers_TodoController_todoNew3_invoker = createInvoker(
-    TodoController_1.todoNew(),
+  private[this] lazy val controllers_PerformanceInfoController_performanceInfoNew2_invoker = createInvoker(
+    PerformanceInfoController_0.performanceInfoNew(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
-      "controllers.TodoController",
-      "todoNew",
+      "controllers.PerformanceInfoController",
+      "performanceInfoNew",
       Nil,
       "GET",
-      this.prefix + """todo/new""",
+      this.prefix + """performance/new""",
       """ input form""",
       Seq()
     )
   )
 
-  // @LINE:12
-  private[this] lazy val controllers_TodoController_todoAdd4_route = Route("POST",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("todo")))
+  // @LINE:9
+  private[this] lazy val controllers_PerformanceInfoController_performanceInfoAdd3_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("performance")))
   )
-  private[this] lazy val controllers_TodoController_todoAdd4_invoker = createInvoker(
-    TodoController_1.todoAdd(),
+  private[this] lazy val controllers_PerformanceInfoController_performanceInfoAdd3_invoker = createInvoker(
+    PerformanceInfoController_0.performanceInfoAdd(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
-      "controllers.TodoController",
-      "todoAdd",
+      "controllers.PerformanceInfoController",
+      "performanceInfoAdd",
       Nil,
       "POST",
-      this.prefix + """todo""",
+      this.prefix + """performance""",
       """""",
       Seq()
     )
   )
 
-  // @LINE:15
-  private[this] lazy val controllers_TodoController_todoEdit5_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("todo/edit/"), DynamicPart("todoId", """[^/]+""",true)))
+  // @LINE:12
+  private[this] lazy val controllers_PerformanceInfoController_performanceInfoEdit4_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("performance/edit/"), DynamicPart("performanceId", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_TodoController_todoEdit5_invoker = createInvoker(
-    TodoController_1.todoEdit(fakeValue[Long]),
+  private[this] lazy val controllers_PerformanceInfoController_performanceInfoEdit4_invoker = createInvoker(
+    PerformanceInfoController_0.performanceInfoEdit(fakeValue[Int]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
-      "controllers.TodoController",
-      "todoEdit",
-      Seq(classOf[Long]),
+      "controllers.PerformanceInfoController",
+      "performanceInfoEdit",
+      Seq(classOf[Int]),
       "GET",
-      this.prefix + """todo/edit/""" + "$" + """todoId<[^/]+>""",
+      this.prefix + """performance/edit/""" + "$" + """performanceId<[^/]+>""",
       """ update data""",
       Seq()
     )
   )
 
-  // @LINE:16
-  private[this] lazy val controllers_TodoController_todoUpdate6_route = Route("POST",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("todo/"), DynamicPart("todoId", """[^/]+""",true)))
+  // @LINE:13
+  private[this] lazy val controllers_PerformanceInfoController_performanceInfoUpdate5_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("performance/"), DynamicPart("performanceId", """[^/]+""",true)))
   )
-  private[this] lazy val controllers_TodoController_todoUpdate6_invoker = createInvoker(
-    TodoController_1.todoUpdate(fakeValue[Long]),
+  private[this] lazy val controllers_PerformanceInfoController_performanceInfoUpdate5_invoker = createInvoker(
+    PerformanceInfoController_0.performanceInfoUpdate(fakeValue[Int]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
-      "controllers.TodoController",
-      "todoUpdate",
-      Seq(classOf[Long]),
+      "controllers.PerformanceInfoController",
+      "performanceInfoUpdate",
+      Seq(classOf[Int]),
       "POST",
-      this.prefix + """todo/""" + "$" + """todoId<[^/]+>""",
+      this.prefix + """performance/""" + "$" + """performanceId<[^/]+>""",
       """""",
       Seq()
     )
   )
 
-  // @LINE:19
-  private[this] lazy val controllers_TodoController_todoDelete7_route = Route("POST",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("todo/"), DynamicPart("todoId", """[^/]+""",true), StaticPart("/delete")))
+  // @LINE:16
+  private[this] lazy val controllers_PerformanceInfoController_performanceInfoDelete6_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("performance/"), DynamicPart("performanceId", """[^/]+""",true), StaticPart("/delete")))
   )
-  private[this] lazy val controllers_TodoController_todoDelete7_invoker = createInvoker(
-    TodoController_1.todoDelete(fakeValue[Long]),
+  private[this] lazy val controllers_PerformanceInfoController_performanceInfoDelete6_invoker = createInvoker(
+    PerformanceInfoController_0.performanceInfoDelete(fakeValue[Int]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
-      "controllers.TodoController",
-      "todoDelete",
-      Seq(classOf[Long]),
+      "controllers.PerformanceInfoController",
+      "performanceInfoDelete",
+      Seq(classOf[Int]),
       "POST",
-      this.prefix + """todo/""" + "$" + """todoId<[^/]+>/delete""",
+      this.prefix + """performance/""" + "$" + """performanceId<[^/]+>/delete""",
       """ delete data""",
       Seq()
     )
@@ -204,49 +185,43 @@ class Routes(
     // @LINE:2
     case controllers_Assets_versioned0_route(params@_) =>
       call(Param[String]("path", Right("/public")), params.fromPath[Asset]("file", None)) { (path, file) =>
-        controllers_Assets_versioned0_invoker.call(Assets_0.versioned(path, file))
+        controllers_Assets_versioned0_invoker.call(Assets_1.versioned(path, file))
       }
   
     // @LINE:5
-    case controllers_TodoController_helloworld1_route(params@_) =>
+    case controllers_PerformanceInfoController_list1_route(params@_) =>
       call { 
-        controllers_TodoController_helloworld1_invoker.call(TodoController_1.helloworld())
+        controllers_PerformanceInfoController_list1_invoker.call(PerformanceInfoController_0.list())
       }
   
     // @LINE:8
-    case controllers_TodoController_list2_route(params@_) =>
+    case controllers_PerformanceInfoController_performanceInfoNew2_route(params@_) =>
       call { 
-        controllers_TodoController_list2_invoker.call(TodoController_1.list())
+        controllers_PerformanceInfoController_performanceInfoNew2_invoker.call(PerformanceInfoController_0.performanceInfoNew())
       }
   
-    // @LINE:11
-    case controllers_TodoController_todoNew3_route(params@_) =>
+    // @LINE:9
+    case controllers_PerformanceInfoController_performanceInfoAdd3_route(params@_) =>
       call { 
-        controllers_TodoController_todoNew3_invoker.call(TodoController_1.todoNew())
+        controllers_PerformanceInfoController_performanceInfoAdd3_invoker.call(PerformanceInfoController_0.performanceInfoAdd())
       }
   
     // @LINE:12
-    case controllers_TodoController_todoAdd4_route(params@_) =>
-      call { 
-        controllers_TodoController_todoAdd4_invoker.call(TodoController_1.todoAdd())
+    case controllers_PerformanceInfoController_performanceInfoEdit4_route(params@_) =>
+      call(params.fromPath[Int]("performanceId", None)) { (performanceId) =>
+        controllers_PerformanceInfoController_performanceInfoEdit4_invoker.call(PerformanceInfoController_0.performanceInfoEdit(performanceId))
       }
   
-    // @LINE:15
-    case controllers_TodoController_todoEdit5_route(params@_) =>
-      call(params.fromPath[Long]("todoId", None)) { (todoId) =>
-        controllers_TodoController_todoEdit5_invoker.call(TodoController_1.todoEdit(todoId))
+    // @LINE:13
+    case controllers_PerformanceInfoController_performanceInfoUpdate5_route(params@_) =>
+      call(params.fromPath[Int]("performanceId", None)) { (performanceId) =>
+        controllers_PerformanceInfoController_performanceInfoUpdate5_invoker.call(PerformanceInfoController_0.performanceInfoUpdate(performanceId))
       }
   
     // @LINE:16
-    case controllers_TodoController_todoUpdate6_route(params@_) =>
-      call(params.fromPath[Long]("todoId", None)) { (todoId) =>
-        controllers_TodoController_todoUpdate6_invoker.call(TodoController_1.todoUpdate(todoId))
-      }
-  
-    // @LINE:19
-    case controllers_TodoController_todoDelete7_route(params@_) =>
-      call(params.fromPath[Long]("todoId", None)) { (todoId) =>
-        controllers_TodoController_todoDelete7_invoker.call(TodoController_1.todoDelete(todoId))
+    case controllers_PerformanceInfoController_performanceInfoDelete6_route(params@_) =>
+      call(params.fromPath[Int]("performanceId", None)) { (performanceId) =>
+        controllers_PerformanceInfoController_performanceInfoDelete6_invoker.call(PerformanceInfoController_0.performanceInfoDelete(performanceId))
       }
   }
 }
