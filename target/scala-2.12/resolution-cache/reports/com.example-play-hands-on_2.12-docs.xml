@@ -7,7 +7,7 @@
 		revision="1.0-SNAPSHOT"
 		conf="docs"
 		confs="compile, runtime, test, provided, optional, web-assets, web-assets-test, web-plugin, universal, universal-docs, universal-src, windows, docker, linux, rpm, debian, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool, docs"
-		date="20190623175813"/>
+		date="20190707180701"/>
 	<dependencies>
 		<module organisation="com.typesafe.play" name="play-omnidoc_2.12">
 			<revision name="2.7.3" status="release" pubdate="20190620184040" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/playframework/omnidoc" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="0">
@@ -15,7 +15,7 @@
 				<metadata-artifact status="no" details="" size="2824" time="0" location="/Users/mizukoshinarumi/.ivy2/cache/com.typesafe.play/play-omnidoc_2.12/ivy-2.7.3.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-omnidoc_2.12/2.7.3/play-omnidoc_2.12-2.7.3.pom"/>
 				<caller organisation="com.example" name="play-hands-on_2.12" conf="docs" rev="2.7.3" rev-constraint-default="2.7.3" rev-constraint-dynamic="2.7.3" callerrev="1.0-SNAPSHOT"/>
 				<artifacts>
-					<artifact name="play-omnidoc_2.12" type="jar" ext="jar" status="successful" details="" size="15386970" time="68548" location="/Users/mizukoshinarumi/.ivy2/cache/com.typesafe.play/play-omnidoc_2.12/jars/play-omnidoc_2.12-2.7.3.jar">
+					<artifact name="play-omnidoc_2.12" type="jar" ext="jar" status="no" details="" size="15386970" time="0" location="/Users/mizukoshinarumi/.ivy2/cache/com.typesafe.play/play-omnidoc_2.12/jars/play-omnidoc_2.12-2.7.3.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/play-omnidoc_2.12/2.7.3/play-omnidoc_2.12-2.7.3.jar"/>
 					</artifact>
 				</artifacts>
