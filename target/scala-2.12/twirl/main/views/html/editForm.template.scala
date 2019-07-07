@@ -14,53 +14,51 @@ import views.html._
 import play.api.templates.PlayMagic._
 import play.api.mvc._
 import play.api.data._
-/*1.2*/import services._
 
-object editForm extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template3[Int,Form[PerformanceInfo],MessagesRequestHeader,play.twirl.api.HtmlFormat.Appendable] {
+object editForm extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template3[Long,Form[String],MessagesRequestHeader,play.twirl.api.HtmlFormat.Appendable] {
 
   /**/
-  def apply/*2.2*/(id: Int, performanceInfoForm: Form[PerformanceInfo])(implicit request: MessagesRequestHeader):play.twirl.api.HtmlFormat.Appendable = {
+  def apply/*1.2*/(id: Long, todoForm: Form[String])(implicit request: MessagesRequestHeader):play.twirl.api.HtmlFormat.Appendable = {
     _display_ {
       {
 
 
-Seq[Any](format.raw/*3.1*/("""
-"""),format.raw/*4.1*/("""<html>
+Seq[Any](format.raw/*2.1*/("""
+"""),format.raw/*3.1*/("""<html>
 <head>
-    <title>ジャニーズ　みんなのコンサートレポ</title>
+    <title>Todo</title>
 </head>
 <body>
-<h1>公演 編集</h1>
+<h1>Todo登録</h1>
 
-"""),_display_(/*11.2*/helper/*11.8*/.form(action = routes.PerformanceInfoController.performanceInfoUpdate(id))/*11.82*/ {_display_(Seq[Any](format.raw/*11.84*/("""
-"""),_display_(/*12.2*/helper/*12.8*/.CSRF.formField),format.raw/*12.23*/("""
+"""),_display_(/*10.2*/helper/*10.8*/.form(action = routes.TodoController.todoUpdate(id))/*10.60*/ {_display_(Seq[Any](format.raw/*10.62*/("""
+"""),_display_(/*11.2*/helper/*11.8*/.CSRF.formField),format.raw/*11.23*/("""
 
-    """),format.raw/*14.5*/("""<fieldset>
+    """),format.raw/*13.5*/("""<fieldset>
 
-        """),_display_(/*16.10*/helper/*16.16*/.inputText(performanceInfoForm("date"), '_label -> "日程")),format.raw/*16.72*/("""
-        """),_display_(/*17.10*/helper/*17.16*/.inputText(performanceInfoForm("time"), '_label -> "開演時間")),format.raw/*17.74*/("""
+        """),_display_(/*15.10*/helper/*15.16*/.inputText(todoForm("name"), '_label -> "名前")),format.raw/*15.61*/("""
 
-    """),format.raw/*19.5*/("""</fieldset>
+    """),format.raw/*17.5*/("""</fieldset>
 
     <input type="submit" value="登録">
 
-""")))}),format.raw/*23.2*/("""
+""")))}),format.raw/*21.2*/("""
 
-"""),_display_(/*25.2*/helper/*25.8*/.form(action = routes.PerformanceInfoController.performanceInfoDelete(id))/*25.82*/ {_display_(Seq[Any](format.raw/*25.84*/("""
-"""),_display_(/*26.2*/helper/*26.8*/.CSRF.formField),format.raw/*26.23*/("""
+"""),_display_(/*23.2*/helper/*23.8*/.form(action = routes.TodoController.todoDelete(id))/*23.60*/ {_display_(Seq[Any](format.raw/*23.62*/("""
+"""),_display_(/*24.2*/helper/*24.8*/.CSRF.formField),format.raw/*24.23*/("""
 
-    """),format.raw/*28.5*/("""<input type="submit" value="削除" class="btn danger">
+    """),format.raw/*26.5*/("""<input type="submit" value="削除" class="btn danger">
 
-""")))}),format.raw/*30.2*/("""
-"""),format.raw/*31.1*/("""</body>
+""")))}),format.raw/*28.2*/("""
+"""),format.raw/*29.1*/("""</body>
 </html>"""))
       }
     }
   }
 
-  def render(id:Int,performanceInfoForm:Form[PerformanceInfo],request:MessagesRequestHeader): play.twirl.api.HtmlFormat.Appendable = apply(id,performanceInfoForm)(request)
+  def render(id:Long,todoForm:Form[String],request:MessagesRequestHeader): play.twirl.api.HtmlFormat.Appendable = apply(id,todoForm)(request)
 
-  def f:((Int,Form[PerformanceInfo]) => (MessagesRequestHeader) => play.twirl.api.HtmlFormat.Appendable) = (id,performanceInfoForm) => (request) => apply(id,performanceInfoForm)(request)
+  def f:((Long,Form[String]) => (MessagesRequestHeader) => play.twirl.api.HtmlFormat.Appendable) = (id,todoForm) => (request) => apply(id,todoForm)(request)
 
   def ref: this.type = this
 
@@ -69,11 +67,11 @@ Seq[Any](format.raw/*3.1*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2019-06-24T23:35:29.341
+                  DATE: 2019-06-23T22:10:44.135
                   SOURCE: /Users/mizukoshinarumi/workspace/scala_workspace/play-hands-on/app/views/editForm.scala.html
-                  HASH: acd74c1fd68e60b3c4d5326cdd9ed053b1d2176e
-                  MATRIX: 432->1|798->20|986->115|1013->116|1122->199|1136->205|1219->279|1259->281|1287->283|1301->289|1337->304|1370->310|1418->331|1433->337|1510->393|1547->403|1562->409|1641->467|1674->473|1756->525|1785->528|1799->534|1882->608|1922->610|1950->612|1964->618|2000->633|2033->639|2117->693|2145->694
-                  LINES: 17->1|22->2|27->3|28->4|35->11|35->11|35->11|35->11|36->12|36->12|36->12|38->14|40->16|40->16|40->16|41->17|41->17|41->17|43->19|47->23|49->25|49->25|49->25|49->25|50->26|50->26|50->26|52->28|54->30|55->31
+                  HASH: 227d6eab1bc7ac878599118ca517776b2b31b915
+                  MATRIX: 765->1|934->77|961->78|1058->149|1072->155|1133->207|1173->209|1201->211|1215->217|1251->232|1284->238|1332->259|1347->265|1413->310|1446->316|1528->368|1557->371|1571->377|1632->429|1672->431|1700->433|1714->439|1750->454|1783->460|1867->514|1895->515
+                  LINES: 21->1|26->2|27->3|34->10|34->10|34->10|34->10|35->11|35->11|35->11|37->13|39->15|39->15|39->15|41->17|45->21|47->23|47->23|47->23|47->23|48->24|48->24|48->24|50->26|52->28|53->29
                   -- GENERATED --
               */
           
